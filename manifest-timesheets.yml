@@ -4,8 +4,6 @@ applications:
   host: timesheets-pal-sr
   memory: 1G
   instances: 1
-  env:
-
   services:
  - tracker-service-registry
 
