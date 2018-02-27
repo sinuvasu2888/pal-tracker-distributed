@@ -1,5 +1,6 @@
 package io.pivotal.pal.tracker.accounts;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import io.pivotal.pal.tracker.accounts.data.AccountDataGateway;
 import io.pivotal.pal.tracker.accounts.data.AccountRecord;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,8 @@ public class AccountController {
         this.gateway = gateway;
     }
 
+
+    @HystrixCommand(fallbackMethod = "getProjectFromCache")
     @GetMapping("/accounts")
     public List<AccountInfo> list(@RequestParam long ownerId) {
         return gateway.findAllByOwnerId(ownerId)

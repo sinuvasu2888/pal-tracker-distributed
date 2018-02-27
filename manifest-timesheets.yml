@@ -5,7 +5,7 @@ applications:
   memory: 1G
   instances: 1
   services:
-  - tracker-allocations-database
+  - tracker-timesheets-database
   - tracker-service-registry
 
 
