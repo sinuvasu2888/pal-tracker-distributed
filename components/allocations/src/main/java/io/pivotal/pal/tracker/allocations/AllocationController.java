@@ -39,7 +39,6 @@ public class AllocationController {
         return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
     }
 
-    @HystrixCommand(fallbackMethod = "getProjectFromCache")
     @GetMapping
     public List<AllocationInfo> list(@RequestParam long projectId) {
         return gateway.findAllByProjectId(projectId)

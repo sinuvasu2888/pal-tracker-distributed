@@ -22,7 +22,7 @@ public class AccountController {
     }
 
 
-    @HystrixCommand(fallbackMethod = "getProjectFromCache")
+
     @GetMapping("/accounts")
     public List<AccountInfo> list(@RequestParam long ownerId) {
         return gateway.findAllByOwnerId(ownerId)
@@ -30,6 +30,7 @@ public class AccountController {
             .map(this::present)
             .collect(toList());
     }
+
 
     private AccountInfo present(AccountRecord record) {
         return accountInfoBuilder()

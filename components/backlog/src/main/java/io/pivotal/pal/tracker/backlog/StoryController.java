@@ -36,7 +36,7 @@ public class StoryController {
         return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
     }
 
-    @HystrixCommand(fallbackMethod = "getProjectFromCache")
+
     @GetMapping
     public List<StoryInfo> list(@RequestParam long projectId) {
         return gateway.findAllByProjectId(projectId).stream()
